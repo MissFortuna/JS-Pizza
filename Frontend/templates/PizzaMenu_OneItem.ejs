@@ -1,0 +1,75 @@
+<%
+
+function getIngredientsArray(pizza) {
+    //Отримує вміст піци
+    var content = pizza.content;
+    var result = [];
+
+    //Object.keys повертає масив ключів в об’єкті JavaScript
+
+    Object.keys(content).forEach(function(key){
+
+        //a.concat(b) створює спільний масив із масивів a та b
+        result = result.concat(content[key]);
+    });
+
+    return result;
+}
+
+   %>
+
+
+
+
+
+<div class="col-sm-7 col-md-5 pizza-card">
+    <div class="thumbnail">
+        <img class="pizza-icon" src="<%= pizza.icon %>" alt="Pizza">
+
+        <% if(pizza.is_new) { %>
+        <span class="label label-danger">Нова</span>
+        <% } else if(pizza.is_popular) {%>
+        <span class="label label-success">Популярна</span>
+        <% } %>
+
+
+
+        <div class="caption">
+            <span class="title"><%= pizza.title %></span>
+            <div class="type"><%= pizza.type %></div>
+            <div class="description">
+                <%= getIngredientsArray(pizza).join(", ") %>
+            </div>
+        </div>
+
+
+        <table class="table">
+            <tbody class="about_pizza">
+            <tr class="sizes">
+                <% if(pizza.small_size) { %>
+                <td><%=pizza.small_size.size%><br>
+                    <%=pizza.small_size.weight%><br>
+                    <strong><%=pizza.small_size.price%> грн.</strong>
+                </td>
+                <% }  if(pizza.big_size) {%>
+                <td><%=pizza.big_size.size%><br>
+                    <%=pizza.big_size.weight%><br><strong>
+                        <%=pizza.big_size.price%> грн.</strong>
+                </td>   <% } %>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->
+        <% if(pizza.small_size) { %>
+        <button class="btn btn-warning buy-small">Купити маленьку</button>
+        <% } if(pizza.big_size) {%>
+        <button class="btn btn-warning buy-big">Купити велику</button>
+        <% } %>
+
+    </div>
+</div>
+
+
+
+
