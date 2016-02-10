@@ -57,7 +57,7 @@ var pizza_info = [
         id:3,
         icon:'assets/images/pizza_1.jpg',
         title: "Міксовий поло",
-        type: 'М`ясна піца',
+        type: 'М’ясна піца',
         content: {
             meat: ['шинка', 'курка копчена'],
             cheese: ['сир моцарелла'],
@@ -101,7 +101,7 @@ var pizza_info = [
         id:5,
         icon:'assets/images/pizza_3.jpg',
         title: "Маргарита",
-        type: 'Вега піца',
+        type: 'Вега',
         content: {
             cheese: ['сир моцарелла', 'сир домашній'],
             tomato: ['помідори'],
@@ -117,7 +117,7 @@ var pizza_info = [
         id:6,
         icon:'assets/images/pizza_6.jpg',
         title: "Мікс смаків",
-        type: 'Ліза',
+        type: 'М’ясна піца',
         content: {
             meat: ['ковбаски'],
             cheese: ['сир моцарелла'],
@@ -195,7 +195,7 @@ var ejs = require('ejs');
 
 exports.PizzaMenu_OneItem = ejs.compile("<%\n\nfunction getIngredientsArray(pizza) {\n    //Отримує вміст піци\n    var content = pizza.content;\n    var result = [];\n\n    //Object.keys повертає масив ключів в об’єкті JavaScript\n\n    Object.keys(content).forEach(function(key){\n\n        //a.concat(b) створює спільний масив із масивів a та b\n        result = result.concat(content[key]);\n    });\n\n    return result;\n}\n\n   %>\n\n\n\n\n\n<div class=\"col-sm-7 col-md-5 pizza-card\">\n    <div class=\"thumbnail\">\n        <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n\n        <% if(pizza.is_new) { %>\n        <span class=\"label label-danger\">Нова</span>\n        <% } else if(pizza.is_popular) {%>\n        <span class=\"label label-success\">Популярна</span>\n        <% } %>\n\n\n\n        <div class=\"caption\">\n            <span class=\"title\"><%= pizza.title %></span>\n            <div class=\"type\"><%= pizza.type %></div>\n            <div class=\"description\">\n                <%= getIngredientsArray(pizza).join(\", \") %>\n            </div>\n        </div>\n\n\n        <table class=\"table\">\n            <tbody class=\"about_pizza\">\n            <tr class=\"sizes\">\n                <% if(pizza.small_size) { %>\n                <td><%=pizza.small_size.size%><br>\n                    <%=pizza.small_size.weight%><br>\n                    <strong><%=pizza.small_size.price%> грн.</strong>\n                </td>\n                <% }  if(pizza.big_size) {%>\n                <td><%=pizza.big_size.size%><br>\n                    <%=pizza.big_size.weight%><br><strong>\n                        <%=pizza.big_size.price%> грн.</strong>\n                </td>   <% } %>\n            </tr>\n            </tbody>\n        </table>\n\n        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->\n        <% if(pizza.small_size) { %>\n        <button class=\"btn btn-warning buy-small\">Купити маленьку</button>\n        <% } if(pizza.big_size) {%>\n        <button class=\"btn btn-warning buy-big\">Купити велику</button>\n        <% } %>\n\n    </div>\n</div>\n\n\n\n\n");
 
-exports.PizzaCart_OneItem = ejs.compile("<div class=\"order-one ng-scope\">\n<table>\n            <tr>\n9                <th> <span class=\"caption\"><%= pizza.title %> (<%= size %>)</span></th>\n            </tr>\n            <tr>\n                <td> <span><img class=\"img-aside pizza-icon\"  alt=\"Піца\" style= \"weight:200px; height: 200px; margin-top: 2%; \"src=\"assets/images/pizza_2.jpg\"></span></td>\n                <td></td>\n            </tr>\n            <tr>\n\n                <td> <span class=\"price\">\n                              <div class=\"order-text\">\n                                  <img class=\"diam-image\" src=\"assets/images/size-icon.svg\">\n                                  <span class=\"\">30</span>\n                                  <img class=\"weight-image\" src=\"assets/images/weight.svg\">\n                                  <span class=\"weight\">500</span>\n                              </div>\n                              Ціна: <%= pizza[size].price %> грн.</span></td>\n\n        <td>  <div class=\"price-box\">\n                <a class=\"minus btn btn-xs btn-danger btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-minus icon-white\">\n                    </i>\n                </a>\n                <span class=\"label order-pizza-count\" style=\"color:black;\">1</span>\n                <a class=\"plus btn btn-xs btn-success btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-plus icon-white\">\n\n                    </i>\n                </a>\n                <a class=\"count-clear btn btn-xs btn-default btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-remove icon-white\">\n                    </i>\n                </a>\n            </div></td>\n        </tr>\n</table>\n</div>\n");
+exports.PizzaCart_OneItem = ejs.compile("<div class=\"order-one ng-scope\">\n<table>\n            <tr>\n              <th> <span class=\"caption\"><%= pizza.title %> (<%= size %>)</span></th>\n            </tr>\n            <tr>\n                <td> <span><img class=\"img-aside pizza-icon\"  alt=\"Піца\" style= \"weight:200px; height: 200px; margin-top: 2%; \"src=\"assets/images/pizza_2.jpg\"></span></td>\n                <td></td>\n            </tr>\n            <tr>\n\n                <td> <span class=\"price\">\n                              <div class=\"order-text\">\n                                  <img class=\"diam-image\" src=\"assets/images/size-icon.svg\">\n                                  <span class=\"\">30</span>\n                                  <img class=\"weight-image\" src=\"assets/images/weight.svg\">\n                                  <span class=\"weight\">500</span>\n                              </div>\n                              Ціна: <%= pizza[size].price %> грн.</span></td>\n\n        <td>  <div class=\"price-box\">\n                <a class=\"minus btn btn-xs btn-danger btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-minus icon-white\">\n                    </i>\n                </a>\n                <span class=\"label order-pizza-count\" style=\"color:black;\">1</span>\n                <a class=\"plus btn btn-xs btn-success btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-plus icon-white\">\n\n                    </i>\n                </a>\n                <a class=\"count-clear btn btn-xs btn-default btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-remove icon-white\">\n                    </i>\n                </a>\n            </div></td>\n        </tr>\n</table>\n</div>\n");
 },{"ejs":8}],4:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
@@ -256,12 +256,10 @@ function addToCart(pizza, size) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
 
         var $node = $(html_code);
-        //$node.find(".remove").click(function(){
+        $node.find(".count-clear").click(function(){
         $node.remove();
-        //})
-        //be very careful!
+        });
         Cart.splice(Cart.indexOf(cart_item), 1);
-
         //Після видалення оновити відображення
         updateCart();
     }
@@ -270,19 +268,6 @@ function addToCart(pizza, size) {
         //Фукнція віпрацьвуватиме при завантаженні сторінки
         //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
         //TODO: ...
-
-        //using local starage for nodes
-        //localStorage.setItem("lastname", "Smith");
-        //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-
-        var saved_pizza = Storage.get('cart');
-        if (saved_pizza) {
-            Cart = saved_pizza;
-        }
-        var saved_number = Storage.get("number_sidePanel");
-        if (saved_number) {
-            $(".sidePanel").find(".allPizzasNumber").text(saved_number)
-        }
 
         updateCart();
     }
@@ -297,9 +282,6 @@ function addToCart(pizza, size) {
         //Функція викликається при зміні вмісту кошика
         //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 
-        //localStorage.setItem("lastname", "Smith");
-        //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-
         //Очищаємо старі піци в кошику
         $cart.html("");
 
@@ -309,23 +291,23 @@ function addToCart(pizza, size) {
 
             var $node = $(html_code);
 
-//            $node.find(".plus").click(function () {
-//                cart_item.quantity += 1;
-//                updateCart();
-//            });
-//
-//            $node.find(".minus").click(function () {
-//                if (cart_item.quantity == 1) {
-//                    removeFromCart(cart_item);
-//                }
-//                else {
-//                    cart_item.quantity -= 1;
-//                }
-//                updateCart();
-//            });
-//            $node.find(".remove").click(function () {
-//                removeFromCart(cart_item)
-//            });
+            $node.find(".glyphicon-plus").click(function () {
+                cart_item.quantity += 1;
+                updateCart();
+            });
+
+            $node.find(".glyphicon-minus").click(function () {
+                if (cart_item.quantity == 1) {
+                    removeFromCart(cart_item);
+                }
+                else {
+                    cart_item.quantity -= 1;
+                }
+                updateCart();
+            });
+            $node.find(".count-clear").click(function () {
+                removeFromCart(cart_item)
+            });
 
             $cart.append($node);
         }
@@ -353,121 +335,117 @@ var Pizza_List = require('../Pizza_List');
 //HTML едемент куди будуть додаватися піци
 var $pizza_list = $("#pizza_list");
 
-function showPizzaList(list) {
-    //Очищаємо старі піци в кошику
-    $pizza_list.html("");
 
     //Онволення однієї піци
-    function showOnePizza(pizza) {
-        var html_code = Templates.PizzaMenu_OneItem({pizza: pizza});
+    function showPizzaList(list) {
+        //Очищаємо старі піци в кошику
+        $pizza_list.html("");
 
-        var $node = $(html_code);
+        //Онволення однієї піци
+        function showOnePizza(pizza) {
+            var html_code = Templates.PizzaMenu_OneItem({pizza: pizza});
 
-        $node.find(".buy-big").click(function(){
-            PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
-        });
-        $node.find(".buy-small").click(function(){
-            PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
-        });
+            var $node = $(html_code);
 
-        $pizza_list.append($node);
+            $node.find(".buy-big").click(function(){
+                PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
+            });
+            $node.find(".buy-small").click(function(){
+                PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
+            });
+
+            $pizza_list.append($node);
+        }
+
+        list.forEach(showOnePizza);
     }
-
-    list.forEach(showOnePizza);
-}
 
 function filterPizza(filter) {
     //Масив куди потраплять піци які треба показати
     var pizza_shown = [];
-
-    Pizza_List.forEach(function(pizza){
-        function filterPizza(filter) {
-            //Масив куди потраплять піци які треба показати
-            var pizza_shown = [];
-            if (filter === "all") pizza_shown = Pizza_List;
+    var total_in_type=0;
+            if (filter === "all")pizza_shown = Pizza_List;
             else if (filter === "vega") {
                 Pizza_List.forEach(function (pizza) {
-                    if (pizza.type === 'Ліза') pizza_shown.push(pizza);
+                    if (pizza.type === 'Вега') {
+                        pizza_shown.push(pizza);
+                        total_in_type++;
+                    }
                 });
             }
             else if (filter === "meat") {
                 Pizza_List.forEach(function (pizza) {
-                    if (pizza.type === 'М`ясна піца') pizza_shown.push(pizza);
+                    if (pizza.type === 'М’ясна піца'){
+                        pizza_shown.push(pizza);
+                        total_in_type++;
+                    }
                 });
             }
             else if (filter === "pineapple") {
                 Pizza_List.forEach(function (pizza) {
-                    if (typeof pizza.content.pineapple) pizza_shown.push(pizza);
+                    if (pizza.content.pineapple){
+                        pizza_shown.push(pizza);
+                        total_in_type++;
+                    }
                 });
             }
 
             else if (filter === "mushroom") {
                 Pizza_List.forEach(function (pizza) {
-                    if (pizza.content.mushroom) pizza_shown.push(pizza);
+                    if (pizza.content.mushroom){
+                        pizza_shown.push(pizza);
+                        total_in_type++;
+                    }
                 });
             }
 
             else if (filter === "ocean") {
                 Pizza_List.forEach(function (pizza) {
-                    if (pizza.content.ocean) pizza_shown.push(pizza);
+                    if (pizza.content.ocean){
+                        pizza_shown.push(pizza);
+                        total_in_type++;
+                    }
                 });
             }
-        }
-    });
-
+//$(".number_of").text(total_in_type);
     //Показати відфільтровані піци
     showPizzaList(pizza_shown);
+
 }
 
 
 $("#all").click(function(){
-//    $pizza_list.html("");
-//    $("#title").text("Усі піци");
-//    $("#titleNumber").text("8");
-    initialiseMenu();
+    $(".allPizzas").text("Усі піцци:"+8);
+  //  $("#IK").text(5);
+    filterPizza('all');
 });
 
 $("#meat").click(function(){
-//   $("#all").addClass("pizzaType");
-//    $pizza_list.html("");
-//    $("#title").text("М'ясні піци");
-//    $("#titleNumber").text("5");
-    filterPizza('meat');
+   $(".allPizzas").text("М'ясні піци:"+5);
+    filterPizza("meat");
 });
 
 
 $("#pineapple").click(function(){
-//    $("#all").addClass(".pizzaType");
-//    $pizza_list.html("");
-//    $("#title").text("Піци з ананасами");
-//    $("#titleNumber").text("3");
+    $(".allPizzas").text("Піци з ананасами:"+3);
     filterPizza('pineapple');
 });
 
 
 $("#mushroom").click(function(){
-//    $("#all").addClass("pizzaType");
-//    $pizza_list.html("");
-//    $("#title").text("Піци з грибами");
-//    $("#titleNumber").text("3");
+    $(".allPizzas").text("Піци з грибами:"+3);
     filterPizza('mushroom');
 });
 
 
 $("#ocean").click(function(){
-//    $("#all").addClass("pizzaType");
-//    $pizza_list.html("");
-//    $("#title").text("Піци з морепродуктами");
-//    $("#titleNumber").text("2");
+    $(".allPizzas").text("Піци з морепродуктами:"+2);
     filterPizza('ocean');
 });
 
 
 $("#vega").click(function(){
-    $("#all").addClass("pizzaType");
-    $pizza_list.html("");
-    $("#title").text("Вегетаріанські піци");
-    $("#titleNumber").text("1");
+    $(".allPizzas").text("Вегетаріанські піци:"+1);
     filterPizza('vega');
 });
 

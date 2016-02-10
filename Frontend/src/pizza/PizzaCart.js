@@ -41,12 +41,10 @@ function addToCart(pizza, size) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
 
         var $node = $(html_code);
-        //$node.find(".remove").click(function(){
+        $node.find(".count-clear").click(function(){
         $node.remove();
-        //})
-        //be very careful!
+        });
         Cart.splice(Cart.indexOf(cart_item), 1);
-
         //Після видалення оновити відображення
         updateCart();
     }
@@ -55,19 +53,6 @@ function addToCart(pizza, size) {
         //Фукнція віпрацьвуватиме при завантаженні сторінки
         //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
         //TODO: ...
-
-        //using local starage for nodes
-        //localStorage.setItem("lastname", "Smith");
-        //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-
-        var saved_pizza = Storage.get('cart');
-        if (saved_pizza) {
-            Cart = saved_pizza;
-        }
-        var saved_number = Storage.get("number_sidePanel");
-        if (saved_number) {
-            $(".sidePanel").find(".allPizzasNumber").text(saved_number)
-        }
 
         updateCart();
     }
@@ -82,9 +67,6 @@ function addToCart(pizza, size) {
         //Функція викликається при зміні вмісту кошика
         //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 
-        //localStorage.setItem("lastname", "Smith");
-        //document.getElementById("result").innerHTML = localStorage.getItem("lastname");
-
         //Очищаємо старі піци в кошику
         $cart.html("");
 
@@ -94,23 +76,23 @@ function addToCart(pizza, size) {
 
             var $node = $(html_code);
 
-//            $node.find(".plus").click(function () {
-//                cart_item.quantity += 1;
-//                updateCart();
-//            });
-//
-//            $node.find(".minus").click(function () {
-//                if (cart_item.quantity == 1) {
-//                    removeFromCart(cart_item);
-//                }
-//                else {
-//                    cart_item.quantity -= 1;
-//                }
-//                updateCart();
-//            });
-//            $node.find(".remove").click(function () {
-//                removeFromCart(cart_item)
-//            });
+            $node.find(".glyphicon-plus").click(function () {
+                cart_item.quantity += 1;
+                updateCart();
+            });
+
+            $node.find(".glyphicon-minus").click(function () {
+                if (cart_item.quantity == 1) {
+                    removeFromCart(cart_item);
+                }
+                else {
+                    cart_item.quantity -= 1;
+                }
+                updateCart();
+            });
+            $node.find(".count-clear").click(function () {
+                removeFromCart(cart_item)
+            });
 
             $cart.append($node);
         }

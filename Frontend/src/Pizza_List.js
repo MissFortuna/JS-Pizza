@@ -56,7 +56,7 @@ var pizza_info = [
         id:3,
         icon:'assets/images/pizza_1.jpg',
         title: "Міксовий поло",
-        type: 'М`ясна піца',
+        type: 'М’ясна піца',
         content: {
             meat: ['шинка', 'курка копчена'],
             cheese: ['сир моцарелла'],
@@ -100,7 +100,7 @@ var pizza_info = [
         id:5,
         icon:'assets/images/pizza_3.jpg',
         title: "Маргарита",
-        type: 'Вега піца',
+        type: 'Вега',
         content: {
             cheese: ['сир моцарелла', 'сир домашній'],
             tomato: ['помідори'],
@@ -116,7 +116,7 @@ var pizza_info = [
         id:6,
         icon:'assets/images/pizza_6.jpg',
         title: "Мікс смаків",
-        type: 'Ліза',
+        type: 'М’ясна піца',
         content: {
             meat: ['ковбаски'],
             cheese: ['сир моцарелла'],
