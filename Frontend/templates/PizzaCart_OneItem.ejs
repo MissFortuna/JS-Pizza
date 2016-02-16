@@ -1,7 +1,18 @@
-<div class="order-one ng-scope">
+
+<ul class="wanna-buy">
+    <li class="p-list">
+        <div class="order-one ng-scope">
 <table>
             <tr>
-              <th> <span class="caption"><%= pizza.title %> (<%= size %>)</span></th>
+              <th> <span class="caption"><%= pizza.title %>
+
+                <% if(size==="small_size") { %>
+                Маленька
+                <% } if(size==="big_size") {%>
+                Велика
+                <% } %>
+
+                </span></th>
             </tr>
             <tr>
                 <td> <span><img class="img-aside pizza-icon"  alt="Піца" style= "weight:200px; height: 200px; margin-top: 2%; "src="assets/images/pizza_2.jpg"></span></td>
@@ -12,18 +23,18 @@
                 <td> <span class="price">
                               <div class="order-text">
                                   <img class="diam-image" src="assets/images/size-icon.svg">
-                                  <span class="">30</span>
+                                  <span class=""><%= pizza[size].size%></span>
                                   <img class="weight-image" src="assets/images/weight.svg">
-                                  <span class="weight">500</span>
+                                  <span class="weight"><%= pizza[size].weight%></span>
                               </div>
-                              Ціна: <%= pizza[size].price %> грн.</span></td>
+                              Ціна:<div class="pricing"> <%= pizza[size].price %> грн.</div></span></td>
 
         <td>  <div class="price-box">
                 <a class="minus btn btn-xs btn-danger btn-circle" href="#">
                     <i class="glyphicon glyphicon-minus icon-white">
                     </i>
                 </a>
-                <span class="label order-pizza-count" style="color:black;">1</span>
+                <span class="label order-pizza-count"  id="quantity" style="color:black;"><%= quantity %></span>
                 <a class="plus btn btn-xs btn-success btn-circle" href="#">
                     <i class="glyphicon glyphicon-plus icon-white">
 
@@ -37,3 +48,5 @@
         </tr>
 </table>
 </div>
+</li>
+    </ul>

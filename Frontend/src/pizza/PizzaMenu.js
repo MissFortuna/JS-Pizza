@@ -19,12 +19,17 @@ var $pizza_list = $("#pizza_list");
             var html_code = Templates.PizzaMenu_OneItem({pizza: pizza});
 
             var $node = $(html_code);
+            //var need_to_pay=0;
 
             $node.find(".buy-big").click(function(){
                 PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
+              //  need_to_pay=need_to_pay+pizza[size].price;
+               // $("#totality").text("HELP грн.");
             });
             $node.find(".buy-small").click(function(){
                 PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
+               // need_to_pay=need_to_pay+pizza[size].price;
+               // $("#totality").text("HELP грн.");
             });
 
             $pizza_list.append($node);
