@@ -1,7 +1,29 @@
-<% include common/header.ejs %>
 
-<div class="">
-    Main Page Content
+
+<div class="row text-center" style="margin-top: 8%; margin-right: 9%">
+    <div class="btn-group">
+        <button class="btn btn-warning ik" id="all" type="button">Усі</button>
+        <button class="btn btn-warning ik" id="meat" type="button">М'ясні</button>
+        <button class="btn btn-warning ik" id="pineapple" type="button">З ананасами</button>
+        <button class="btn btn-warning ik" id="mushroom" type="button">З грибами</button>
+        <button class="btn btn-warning ik" id="ocean" type="button">З морепродуктами</button>
+        <button class="btn btn-warning ik" id="vega" type="button">Вега</button>
+    </div>
+</div>
+<div class="row text-center" style="margin-top: 2%; margin-right: 9% ">
+    <div class="allPizzas center-block grand-title">Усі піци: <span class="number_of">8</span></div>
 </div>
 
+<div id="cart"></div>
+<div class="container">
+    <div class="row" id="pizza_list">
+
+    </div>
+</div>
+
+<%include common/header.ejs%>
+<%include common/rightPanel.ejs%>
 <% include common/footer.ejs %>
+
+
+

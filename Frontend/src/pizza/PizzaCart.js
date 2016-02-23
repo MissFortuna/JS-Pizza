@@ -140,6 +140,9 @@ $("#clear_all").click(function(){
     updateCart();
 });
 
+$(".pay-me").click(function(){
+    window.location = "assets/www/order.html";
+});
 
     exports.removeFromCart = removeFromCart;
     exports.addToCart = addToCart;

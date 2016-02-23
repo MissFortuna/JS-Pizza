@@ -1,123 +1,83 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>Pizza</title>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head lang="en">-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>Pizza</title>-->
 
-    <!-- Bootsrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!--&lt;!&ndash; Bootsrap CSS &ndash;&gt;-->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">-->
 
-    <!-- LESS основний файл -->
-    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
-    <!-- LESS JavaScript компілятор -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
+    <!--&lt;!&ndash; LESS основний файл &ndash;&gt;-->
+    <!--<link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />-->
+    <!--&lt;!&ndash; LESS JavaScript компілятор &ndash;&gt;-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>-->
 
 
-</head>
-<body>
+<!--</head>-->
+<!--<body>-->
 
-<div class="row text-center" style="margin-top: 8%; margin-right: 9%">
-    <div class="btn-group">
-        <button class="btn btn-warning ik" id="all" type="button">Усі</button>
-        <button class="btn btn-warning ik" id="meat" type="button">М'ясні</button>
-        <button class="btn btn-warning ik" id="pineapple" type="button">З ананасами</button>
-        <button class="btn btn-warning ik" id="mushroom" type="button">З грибами</button>
-        <button class="btn btn-warning ik" id="ocean" type="button">З морепродуктами</button>
-        <button class="btn btn-warning ik" id="vega" type="button">Вега</button>
-    </div>
-</div>
-<div class="row text-center" style="margin-top: 2%; margin-right: 9% ">
-    <div class="allPizzas center-block grand-title">Усі піци: <span class="number_of">8</span></div>
-</div>
+<!--<div class="row text-center" style="margin-top: 8%; margin-right: 9%">-->
+    <!--<div class="btn-group">-->
+        <!--<button class="btn btn-warning ik" id="all" type="button">Усі</button>-->
+        <!--<button class="btn btn-warning ik" id="meat" type="button">М'ясні</button>-->
+        <!--<button class="btn btn-warning ik" id="pineapple" type="button">З ананасами</button>-->
+        <!--<button class="btn btn-warning ik" id="mushroom" type="button">З грибами</button>-->
+        <!--<button class="btn btn-warning ik" id="ocean" type="button">З морепродуктами</button>-->
+        <!--<button class="btn btn-warning ik" id="vega" type="button">Вега</button>-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="row text-center" style="margin-top: 2%; margin-right: 9% ">-->
+    <!--<div class="allPizzas center-block grand-title">Усі піци: <span class="number_of">8</span></div>-->
+<!--</div>-->
 
-<div id="cart"></div>
-<div class="container">
-    <div class="row" id="pizza_list">
+<!--<div id="cart"></div>-->
+<!--<div class="container">-->
+    <!--<div class="row" id="pizza_list">-->
 
-</div>
-    </div>
+<!--</div>-->
+    <!--</div>-->
 
-    <div class="upperPanel">
-        <footer class="f2">
+    <!--<div class="upperPanel">-->
+        <!--<footer class="f2">-->
 
-            <img class="imd" src="assets/images/orange.png">
+            <!--<img class="imd" src="assets/images/orange.png">-->
 
-            <span class="  menu  phone">(044) 222 5 222</span>
-            <span class="  time menu hidden-sm hidden-xs">24 години/7 днів на тиждень</span>
-            <span class="  cool menu hidden-md  hidden-sm  hidden-xs">Безкоштовна доставка піци</span>
+            <!--<span class="  menu  phone">(044) 222 5 222</span>-->
+            <!--<span class="  time menu hidden-sm hidden-xs">24 години/7 днів на тиждень</span>-->
+            <!--<span class="  cool menu hidden-md  hidden-sm  hidden-xs">Безкоштовна доставка піци</span>-->
 
-            <button type="button" id="login" class="btn btn-warning pull-right menu">Ввійти</button>
+            <!--<button type="button" id="login" class="btn btn-warning pull-right menu">Ввійти</button>-->
 
-        </footer>
-    </div>
+        <!--</footer>-->
+    <!--</div>-->
 
-    <div class="col-md-3 right-panel">
-        <span class="pizzaa-list">Замовлення</span>
-        <span> <button type="button" id="clear_all" class="btn btn-default pull-right menu">Очистити замовлення</button></span>
-        <hr>
-        <div  id="card"></div>
-        <hr>
-        <strong class="total-to-pay"> До сплати:   </strong>
-        <span class="total-to-pay" id="totality"><strong>0 грн</strong></span>
-        <div><button class="btn btn-warning medium pay-me" type="button">Замовити</button></div>
-    </div>
+    <!--<div class="col-md-3 right-panel">-->
+        <!--<span class="pizzaa-list">Замовлення</span>-->
+        <!--<span> <button type="button" id="clear_all" class="btn btn-default pull-right menu">Очистити замовлення</button></span>-->
+        <!--<hr>-->
+        <!--<div  id="card"></div>-->
+        <!--<hr>-->
+        <!--<strong class="total-to-pay"> До сплати:   </strong>-->
+        <!--<span class="total-to-pay" id="totality"><strong>0 грн</strong></span>-->
+        <!--<div><button class="btn btn-warning medium pay-me" type="button">Замовити</button></div>-->
+    <!--</div>-->
         <!--<ul class="wanna-buy">-->
             <!--<li class="p-list">-->
 
-
-                    <!--If you want to check design, uncomment next code:-->
-                    <!--<table>-->
-                        <!--<tr>-->
-                            <!--<th> <span class="caption"><h3>BBQ (Мала)</h3></span></th>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td> <span><img class="img-aside pizza-icon"  alt="Піца" style= "weight:200px; height: 200px; margin-top: 2%; "src="assets/images/pizza_2.jpg"></span></td>-->
-                            <!--<td></td>-->
-                        <!--</tr>-->
-                        <!--<tr>-->
-                            <!--<td> <span class="price">-->
-                              <!--<div class="order-text">-->
-                                  <!--<img class="diam-image" src="assets/images/size-icon.svg">-->
-                                  <!--<span class="">30</span>-->
-                                  <!--<img class="weight-image" src="assets/images/weight.svg">-->
-                                  <!--<span class="weight">500</span>-->
-                              <!--</div>-->
-                              <!--170грн</span></td>-->
-                            <!--<td>  <div class="price-box">-->
-                                <!--<a class="minus btn btn-xs btn-danger btn-circle" href="#">-->
-                                    <!--<i class="glyphicon glyphicon-minus icon-white">-->
-                                    <!--</i>-->
-                                <!--</a>-->
-                                <!--<span class="label order-pizza-count" style="color:black;">1</span>-->
-                                <!--<a class="plus btn btn-xs btn-success btn-circle" href="#">-->
-                                    <!--<i class="glyphicon glyphicon-plus icon-white">-->
-
-                                    <!--</i>-->
-                                <!--</a>-->
-                                <!--<a class="count-clear btn btn-xs btn-default btn-circle" href="#">-->
-                                    <!--<i class="glyphicon glyphicon-remove icon-white">-->
-                                    <!--</i>-->
-                                <!--</a>-->
-                            <!--</div></td>-->
-                        <!--</tr>-->
-                    <!--</table>-->
             <!--</li>-->
         <!--</ul>-->
         <!--<hr>-->
     <!--</div>-->
 
-<!--<div id="foo">-->
-<!--Pizza.22-практичний проект в межах курсу JavaScript в Києво-Могилянскій Академії. <br> Доставка піци не здійснюється.-->
-<!--</div>-->
-<footer class="f1"> <img class="imd" src="assets/images/orange-down.png"></footer>
+<!--<footer class="f1"> <img class="imd" src="assets/images/orange-down.png"></footer>-->
 
-<!-- jQuery JavaScript -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+<!--&lt;!&ndash; jQuery JavaScript &ndash;&gt;-->
+<!--<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>-->
 
-<!--Bootsrap JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<!--&lt;!&ndash;Bootsrap JavaScript &ndash;&gt;-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>-->
 
-<!--Own JavaScript -->
-<script type="text/javascript"  src="assets/js/main.js"> </script>
-</body>
-</html>
+<!--&lt;!&ndash;Own JavaScript &ndash;&gt;-->
+<!--<script type="text/javascript"  src="assets/js/main.js"> </script>-->
+<!--</body>-->
+<!--</html>-->
