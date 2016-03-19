@@ -1,6 +1,3 @@
-<% include common/footer.ejs %>
-<%include common/header.ejs%>
-
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -14,7 +11,6 @@
     <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 </head>
-
 
 <div class="orderBox row order-page-panel">
     <div class="left-panel">
@@ -82,16 +78,12 @@
         </div>
     </div>
 </div>
+<div id="googleMap" style="width: 900px;height: 400px; margin: 200px"></div>
+<% include common/footer.ejs %>
+<%include common/header.ejs%>
 <%include common/rightPanel.ejs%>
-<div id="googleMap"></div>
-
 <script type="text/javascript"
-        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDtOXULUWSzUPzMCMMg4gLubibARffgPuE">
-</script>
-
-<div id="liqpay"></div>
-
-<script src="//static.liqpay.com/libjs/checkout.js">
+        src="http://maps.googleapis.com/maps/api/js?key=AIzaSyD99YyiZL3DZnOnuTCKJPeyI1hqu0wRMWY">
 </script>
 
 </html>

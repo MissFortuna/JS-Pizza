@@ -23,13 +23,9 @@ var $pizza_list = $("#pizza_list");
 
             $node.find(".buy-big").click(function(){
                 PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
-              //  need_to_pay=need_to_pay+pizza[size].price;
-               // $("#totality").text("HELP грн.");
             });
             $node.find(".buy-small").click(function(){
                 PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
-               // need_to_pay=need_to_pay+pizza[size].price;
-               // $("#totality").text("HELP грн.");
             });
 
             $pizza_list.append($node);
@@ -85,8 +81,6 @@ function filterPizza(filter) {
                     }
                 });
             }
-//$(".number_of").text(total_in_type);
-    //Показати відфільтровані піци
     showPizzaList(pizza_shown);
 
 }

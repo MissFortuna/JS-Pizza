@@ -38,21 +38,6 @@ exports.createOrder = function(order_info, callback) {
 };
 },{}],2:[function(require,module,exports){
 /**
- * Created by Elizabeth on 2/17/2016.
- */
-function initialize() {
-
-    var mapProp = {
-        center: new google.maps.LatLng(50.464379,30.519131),
-        zoom: 11
-    };
-    var html_element = document.getElementById("googleMap");
-    var map = new google.maps.Map(html_element, mapProp);
-
-}
-google.maps.event.addDomListener(window, 'load', initialize);
-},{}],3:[function(require,module,exports){
-/**
 * Created by diana on 12.01.16.
 */
 
@@ -229,7 +214,7 @@ var pizza_info = [
 ];
 
 module.exports = pizza_info;
-},{}],4:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 var basil	=	require('basil.js');
 basil	=	new	basil();
 exports.get =	function(key)	{
@@ -238,7 +223,7 @@ exports.get =	function(key)	{
 exports.set =	function(key,	value)	{
     return	basil.set(key,	value);
 };
-},{"basil.js":9}],5:[function(require,module,exports){
+},{"basil.js":8}],4:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -248,8 +233,8 @@ var ejs = require('ejs');
 
 exports.PizzaMenu_OneItem = ejs.compile("<%\n\nfunction getIngredientsArray(pizza) {\n    //Отримує вміст піци\n    var content = pizza.content;\n    var result = [];\n\n    //Object.keys повертає масив ключів в об’єкті JavaScript\n\n    Object.keys(content).forEach(function(key){\n\n        //a.concat(b) створює спільний масив із масивів a та b\n        result = result.concat(content[key]);\n    });\n\n    return result;\n}\n\n   %>\n\n\n\n\n\n<div class=\"col-sm-7 col-md-5 pizza-card\">\n    <div class=\"thumbnail\">\n        <img class=\"pizza-icon\" src=\"<%= pizza.icon %>\" alt=\"Pizza\">\n\n        <% if(pizza.is_new) { %>\n        <span class=\"label label-danger\">Нова</span>\n        <% } else if(pizza.is_popular) {%>\n        <span class=\"label label-success\">Популярна</span>\n        <% } %>\n\n\n\n        <div class=\"caption\">\n            <span class=\"title\"><%= pizza.title %></span>\n            <div class=\"type\"><%= pizza.type %></div>\n            <div class=\"description\">\n                <%= getIngredientsArray(pizza).join(\", \") %>\n            </div>\n        </div>\n\n\n        <table class=\"table\">\n            <tbody class=\"about_pizza\">\n            <tr class=\"sizes\">\n                <% if(pizza.small_size) { %>\n                <td><%=pizza.small_size.size%><br>\n                    <%=pizza.small_size.weight%><br>\n                    <strong><%=pizza.small_size.price%> грн.</strong>\n                </td>\n                <% }  if(pizza.big_size) {%>\n                <td><%=pizza.big_size.size%><br>\n                    <%=pizza.big_size.weight%><br><strong>\n                        <%=pizza.big_size.price%> грн.</strong>\n                </td>   <% } %>\n            </tr>\n            </tbody>\n        </table>\n\n        <!-- Перед тим щоб показати кнопку необхідно переконатися, що піца має великий розмір -->\n        <% if(pizza.small_size) { %>\n        <button class=\"btn btn-warning buy-small\">Купити маленьку</button>\n        <% } if(pizza.big_size) {%>\n        <button class=\"btn btn-warning buy-big\">Купити велику</button>\n        <% } %>\n\n    </div>\n</div>\n\n\n\n\n");
 
-exports.PizzaCart_OneItem = ejs.compile("\n<ul class=\"wanna-buy\">\n    <li class=\"p-list\">\n        <div class=\"order-one ng-scope\">\n<table>\n            <tr>\n              <th> <span class=\"caption\"><%= pizza.title %>\n\n                <% if(size===\"small_size\") { %>\n                Маленька\n                <% } if(size===\"big_size\") {%>\n                Велика\n                <% } %>\n\n                </span></th>\n            </tr>\n            <tr>\n                <td> <span><img class=\"img-aside pizza-icon\"  alt=\"Піца\" style= \"weight:200px; height: 200px; margin-top: 2%; \"src=\"assets/images/pizza_2.jpg\"></span></td>\n                <td></td>\n            </tr>\n            <tr>\n\n                <td> <span class=\"price\">\n                              <div class=\"order-text\">\n                                  <img class=\"diam-image\" src=\"assets/images/size-icon.svg\">\n                                  <span class=\"\"><%= pizza[size].size%></span>\n                                  <img class=\"weight-image\" src=\"assets/images/weight.svg\">\n                                  <span class=\"weight\"><%= pizza[size].weight%></span>\n                              </div>\n                              Ціна:<div class=\"pricing\"> <%= pizza[size].price %> грн.</div></span></td>\n\n        <td>  <div class=\"price-box\">\n                <a class=\"minus btn btn-xs btn-danger btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-minus icon-white\">\n                    </i>\n                </a>\n                <span class=\"label order-pizza-count\"  id=\"quantity\" style=\"color:black;\"><%= quantity %></span>\n                <a class=\"plus btn btn-xs btn-success btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-plus icon-white\">\n\n                    </i>\n                </a>\n                <a class=\"count-clear btn btn-xs btn-default btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-remove icon-white\">\n                    </i>\n                </a>\n            </div></td>\n        </tr>\n</table>\n</div>\n</li>\n    </ul>");
-},{"ejs":10}],6:[function(require,module,exports){
+exports.PizzaCart_OneItem = ejs.compile("\n<ul class=\"wanna-buy\">\n    <li class=\"p-list\">\n        <div class=\"order-one ng-scope\">\n<table>\n            <tr>\n              <th> <span class=\"caption\"><%= pizza.title %>\n\n                <% if(size===\"small_size\") { %>\n                Маленька\n                <% } if(size===\"big_size\") {%>\n                Велика\n                <% } %>\n\n                </span></th>\n            </tr>\n            <tr>\n                <td> <span><img class=\"img-aside pizza-icon\"  alt=\"Піца\" style= \"weight:200px; height: 200px; margin-top: 2%; \"src=\"assets/images/pizza_2.jpg\"></span></td>\n                <td></td>\n            </tr>\n            <tr>\n\n                <td> <span class=\"price\">\n                              <div class=\"order-text\">\n                                  <img class=\"diam-image\" src=\"assets/images/size-icon.svg\">\n                                  <span class=\"\"><%= pizza[size].size%></span>\n                                  <img class=\"weight-image\" src=\"assets/images/weight.svg\">\n                                  <span class=\"weight\"><%= pizza[size].weight%></span>\n                              </div>\n                              Ціна:<div class=\"pricing\"> <%= pizza[size].price %> грн.</div></span></td>\n\n        <td>  <div class=\"price-box\">\n                <a class=\"mms minus btn btn-xs btn-danger btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-minus icon-white\">\n                    </i>\n                </a>\n                <span class=\"label order-pizza-count\"  id=\"quantity\" style=\"color:black;\"><%= quantity %></span>\n                <a class=\"mmp plus btn btn-xs btn-success btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-plus icon-white\">\n\n                    </i>\n                </a>\n                <a class=\"count-clear btn btn-xs btn-default btn-circle\" href=\"#\">\n                    <i class=\"glyphicon glyphicon-remove icon-white\">\n                    </i>\n                </a>\n            </div></td>\n        </tr>\n</table>\n</div>\n</li>\n    </ul>");
+},{"ejs":9}],5:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
  */
@@ -273,9 +258,7 @@ if(err){
         PizzaCart.initialiseCart();
         PizzaMenu.initialiseMenu();
     });
-
-    $(".pay-me").click(function(){
-        window.location = "/order.html";
+        // заховати біля піци кнопки, заховати кнопки на редагувати замовлення.
 
 //
 //phone: "Phone",
@@ -297,25 +280,210 @@ if(err){
 //        }).on("liqpay.close", function(data){
 //            // close
 //        });
-    });
 
-
-
-    google.maps.event.addDomListener(
+    /*google.maps.event.addDomListener(
         window,
         'load',
         initialize);
     require('./GoogleMap');
+    */
+
+    function initialize() {
+//Тут починаємо працювати з картою
+//        directionDisplay=new google.maps.DirectionRenderer();
+        console.log('!!');
+        var mapProp = {
+            center: new google.maps.LatLng(50.464379,30.519131),
+            zoom: 11
+        };
+        var html_element = document.getElementById("googleMap");
+        var map = new google.maps.Map(html_element, mapProp);
+        var point	=	new	google.maps.LatLng(50.464379,30.519131);
+        //alert(point);
+        var markerPizza	=	new	google.maps.Marker({
+            position:	point,
+//map	- це змінна карти створена за допомогою new google.maps.Map(...)
+            map:	map,
+            icon:	"assets/images/map-icon.png"
+        });
+//Карта створена і показана
+
+        google.maps.event.addListener(map,
+            'click',function(me){
+                var coordinates	=	me.latLng;
+//coordinates	- такий самий об’єкт як створений new google.maps.LatLng(...)
+            });
+
+        var marker;
+        var path;
+        var point	=	new	google.maps.LatLng(50.464379,30.519131);
+        google.maps.event.addListener(map,
+            'click',function(me){
+                var coordinates	=	me.latLng;
+                geocodeLatLng(coordinates,	function(err,	adress){
+                    if(!err)	{
+//Дізналися адресу
+                        console.log(adress);
+                        if(marker){
+                            marker.setMap(null);
+                        }
+                        marker	=	new	google.maps.Marker({
+                            position:	coordinates,
+//map	- це змінна карти створена за допомогою new google.maps.Map(...)
+                            map:	map,
+                            icon:	"assets/images/home-icon.png"
+                        });
+
+                        $("#adress").val(adress);
+                        //var point	=	new	google.maps.LatLng(50.464379,30.519131);
+                        calculateRoute(point, coordinates, function(err, duration){
+                            if(!err){
+                                console.log(duration);
+                                //console.log(travelMode);
+
+                                $("#when").text(duration.duration.text);
+                            }
+
+                        })
+                        calculateRoute(point, coordinates, function(err,overview_path){
+                            if(!err){
+                                console.log(overview_path);
+                                //console.log(travelMode);
+                                if(path){
+                                    path.setMap(null);
+                                }
+                                //var coord=[point, coordinates];
+                                path=new google.maps.Polyline({
+                                    path: overview_path.overview_path,
+                                    geodesic: true,
+                                    strokeColor: "#5BB4FF",
+                                    strokeOpacity: 0.75
+                                })
+                                path.setMap(map);
+                            }
+
+                        })
+                        $("#where").text(adress);
+                    }	else	{
+                        console.log("Немає адреси")
+                    }
+                })
+            });
+
+        $("#adress").focusout(function(){
+            var adress=$("#adress").val();
+            geocodeAddress(adress,	function(err,	coordinates){
+                if(!err)	{
+//Дізналися адресу
+                    console.log(coordinates);
+                    if(marker){
+                        marker.setMap(null);
+                    }
+                    marker	=	new	google.maps.Marker({
+                        position:	coordinates,
+//map	- це змінна карти створена за допомогою new google.maps.Map(...)
+                        map:	map,
+                        icon:	"assets/images/home-icon.png"
+                    });
+                    //$("#adress").val(adress);
+                    $("#adress").val(adress);
+                    //var point	=	new	google.maps.LatLng(50.464379,30.519131);
+                    calculateRoute(point, coordinates, function(err, duration){
+                        if(!err){
+                            console.log(duration);
+                            $("#when").text(duration.duration.text);
+                        }
+
+                    })
+                    calculateRoute(point, coordinates, function(err,overview_path){
+                        if(!err){
+                            console.log(overview_path);
+                            //console.log(travelMode);
+                            if(path){
+                                path.setMap(null);
+                            }
+                            //var coord=[point, coordinates];
+                            path=new google.maps.Polyline({
+                                path: overview_path.overview_path,
+                                geodesic: true,
+                                strokeColor: "#5BB4FF",
+                                strokeOpacity: 0.75
+                            })
+                            path.setMap(map);
+                        }
+
+                    })
+                    $("#where").text(adress);
+                }	else	{
+                    console.log("Немає координат")
+                }
+            })
+        })
+
+    }
+// //Коли сторінка завантажилась
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+
+    function	geocodeLatLng(latlng,	 callback){
+//Модуль за роботу з адресою
+        var geocoder	=	new	google.maps.Geocoder();
+        geocoder.geocode({'location':	latlng},	function(results,	status)	{
+            if	(status	===	google.maps.GeocoderStatus.OK&&	results[1])	{
+                var adress =	results[1].formatted_address;
+                callback(null,	adress);
+            }	else	{
+                callback(new	Error("Can't	find	adress"));
+            }
+        });
+    }
+
+    function	geocodeAddress(adress,	 callback)	{
+        var geocoder	=	new	google.maps.Geocoder();
+        geocoder.geocode({'address':	adress},	function(results,	status)	{
+            if	(status	===	google.maps.GeocoderStatus.OK&&	results[0])	{
+                var coordinates	=	results[0].geometry.location;
+                callback(null,	coordinates);
+            }	else	{
+                callback(new	Error("Can	not	find	the	adress"));
+            }
+        });
+    }
+
+    function	calculateRoute(A_latlng,	 B_latlng,	callback)	{
+        var directionService =	new	google.maps.DirectionsService();
+        //var directionDispaly=new google.maps.DirectionsRenderer();
+        directionService.route({
+            origin:	A_latlng,
+            destination:	B_latlng,
+            travelMode:	google.maps.TravelMode["DRIVING"]
+        },	function(response,	status)	{
+            if	(	status	==	google.maps.DirectionsStatus.OK )	{
+                var leg	=	response.routes[	0	].legs[	0	];
+                //directionDispaly.setDirections(response);
+                callback(null,	{
+                    duration:	leg.duration,
+                    overview_path: response.routes[	0	].overview_path
+                });
+            }	else	{
+                callback(new	Error("Can'	not	find	direction"));
+            }
+        });
+    }
+    //marker.setMap();
+    //google.maps.event.addDomListener(window, 'load', initialize);
+
 });
 
 //
 
 
 
-},{"./API":1,"./GoogleMap":2,"./Pizza_List":3,"./pizza/PizzaCart":7,"./pizza/PizzaMenu":8}],7:[function(require,module,exports){
+},{"./API":1,"./Pizza_List":2,"./pizza/PizzaCart":6,"./pizza/PizzaMenu":7}],6:[function(require,module,exports){
 /**
-* Created by chaika on 02.02.16.
-*/
+ * Created by chaika on 02.02.16.
+ */
 var Templates = require('../Templates');
 var Storage=require('../Storage');
 
@@ -327,15 +495,16 @@ var PizzaSize = {
 };
 
 var Cart = [];
+var total=0;
 
 //HTML element where pizzas situated
 var $cart = $("#card");
-var need_to_pay=0;
+
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
 
     //Приклад реалізації, можна робити будь-яким іншим способом
-var add_new=true;
+    var add_new=true;
     for( var a=0;a<Cart.length;a++){
         if((pizza===Cart[a].pizza)&&(size===Cart[a].size)) {
             Cart[a].quantity += 1;
@@ -351,123 +520,139 @@ var add_new=true;
     }
 
     //Оновити вміст кошика на сторінці
-    need_to_pay += pizza[size].price;
-    $("#totality").text(need_to_pay+" грн.");
+    total += pizza[size].price;
+    $("#totality").text(total+" грн.");
     updateCart();
 }
 
 
-    //Після видалення оновити відображення
-    function removeFromCart(cart_item) {
-        //Видалити піцу з кошика
-        var html_code = Templates.PizzaCart_OneItem(cart_item);
+//Після видалення оновити відображення
+function removeFromCart(cart_item) {
+    //Видалити піцу з кошика
+    var html_code = Templates.PizzaCart_OneItem(cart_item);
 
-        var $node = $(html_code);
-        $node.find(".count-clear").click(function(){
+    var $node = $(html_code);
+    $node.find(".count-clear").click(function(){
         $node.remove();
+    });
+    Cart.splice(Cart.indexOf(cart_item), 1);
+    //Після видалення оновити відображення
+    updateCart();
+}
+
+function initialiseCart() {
+    //Фукнція віпрацьвуватиме при завантаженні сторінки
+    //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
+    var saved_pizza=Storage.get('cart');
+    if(saved_pizza){
+        Cart=saved_pizza;
+    }
+
+    var saved_sum=Storage.get('totality');
+    if(saved_sum){
+        $("#totality").text(saved_sum+" грн.");
+        total=parseInt($("#totality").text());
+    }
+
+    updateCart();
+}
+
+function getPizzaInCart() {
+    return Cart;
+}
+
+
+function updateCart() {
+    //Функція викликається при зміні вмісту кошика
+    //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміcт кошика в Local Storage
+
+    //Очищаємо старі піци в кошику
+    $cart.html("");
+    //Онволення однієї піци
+    function showOnePizzaInCart(cart_item) {
+        var html_code = Templates.PizzaCart_OneItem(cart_item);
+        var $node = $(html_code);
+        var pricing=parseInt($node.find(".pricing").text());
+        var counter=parseInt($node.find("#quantity").text());
+
+        $node.find(".glyphicon-plus").click(function () {
+            cart_item.quantity += 1;
+            total += pricing;
+            $("#totality").text(total+" грн.");
+            updateCart();
         });
-        Cart.splice(Cart.indexOf(cart_item), 1);
-        //Після видалення оновити відображення
 
-        updateCart();
-    }
-
-    function initialiseCart() {
-        //Фукнція віпрацьвуватиме при завантаженні сторінки
-        //Тут можна наприклад, зчитати вміст корзини який збережено в Local Storage то показати його
-        //TODO: ...
-
-        var saved_pizza=Storage.get('cart');
-        if(saved_pizza){
-            Cart=saved_pizza;
-        }
-
-        var saved_sum=Storage.get("totality");
-        if(saved_sum){
-            $("#totality").text(saved_sum+" грн.");
-        }
-
-        updateCart();
-    }
-
-    function getPizzaInCart() {
-        //Повертає піци які зберігаються в кошику
-
-        return Cart;
-    }
-
-    function updateCart() {
-        //Функція викликається при зміні вмісту кошика
-        //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміcт кошика в Local Storage
-
-        //Очищаємо старі піци в кошику
-        $cart.html("");
-
-        //Онволення однієї піци
-        function showOnePizzaInCart(cart_item) {
-            var html_code = Templates.PizzaCart_OneItem(cart_item);
-
-            var $node = $(html_code);
-            var pricing=parseInt($node.find(".pricing").text());
-            var counter=parseInt($node.find("#quantity").text());
-
-            $node.find(".glyphicon-plus").click(function () {
-                cart_item.quantity += 1;
-                need_to_pay += pricing;
-                $("#totality").text( need_to_pay+" грн.");
-                updateCart();
-            });
-
-            $node.find(".glyphicon-minus").click(function () {
-                if (cart_item.quantity == 1) {
-                    removeFromCart(cart_item);
-                    need_to_pay -= pricing*counter;
-                    $("#totality").text( need_to_pay+" грн.");
-                }
-                else {
-                    cart_item.quantity -= 1;
-                    need_to_pay -= pricing;
-                    $("#totality").text( need_to_pay+" грн.");
-                }
-                updateCart();
-            });
-            $node.find(".count-clear").click(function () {
+        $node.find(".glyphicon-minus").click(function () {
+            if (cart_item.quantity == 1) {
                 removeFromCart(cart_item);
-                need_to_pay -= pricing*counter;
-                $("#totality").text( need_to_pay+" грн.");
-            });
+                total -= pricing*counter;
+            }
+            else {
+                cart_item.quantity -= 1;
+                total -= pricing;
+            }
+            $("#totality").text(total+" грн.");
+            updateCart();
+        });
+        $node.find(".count-clear").click(function () {
+            removeFromCart(cart_item);
+            total -= pricing*counter;
+            $("#totality").text(total+" грн.");
+            updateCart();
+        });
 
-            $cart.append($node);
+        var url=window.location.toString();
+
+        if(url.indexOf('/order.html')+1){
+            $node.find('.mms').hide();
+            $node.find('.mmp').hide();
+            $node.find('.count-clear').hide();
+            $("#clear_all").hide();
+            $('.pay-me').hide();
+            $('.edit-me').show();
+        }
+        else{
+            $node.find('.mms').show();
+            $node.find('.mmp').show();
+            $node.find('.count-clear').show();
+            $("#clear_all").show();
+            $('.pay-me').show();
+            $('.edit-me').hide();
         }
 
-        Cart.forEach(showOnePizzaInCart);
-
-        var nu = $(".sidePanel").find(".allPizzasNumber").text();
-        Storage.set("totality", need_to_pay);
-        Storage.set("cart",Cart);
+        $cart.append($node);
     }
+
+    Cart.forEach(showOnePizzaInCart);
+    Storage.set("totality",total);
+    Storage.set("cart",Cart);
+}
 
 $("#clear_all").click(function(){
-   Cart=[];
+    Cart=[];
     $cart.html("");
-    need_to_pay=0;
-   $("#totality").text(need_to_pay+" грн.");
+    total=0;
+    $("#totality").text(total+" грн.");
     updateCart();
+
 });
 
 $(".pay-me").click(function(){
-    window.location = "assets/www/order.html";
+    window.location = "/order.html";
 });
 
-    exports.removeFromCart = removeFromCart;
-    exports.addToCart = addToCart;
+$(".edit-me").click(function(){
+    window.location="/";
+});
+exports.removeFromCart = removeFromCart;
+exports.addToCart = addToCart;
 
-    exports.getPizzaInCart = getPizzaInCart;
-    exports.initialiseCart = initialiseCart;
+exports.getPizzaInCart = getPizzaInCart;
+exports.initialiseCart = initialiseCart;
 
-    exports.PizzaSize = PizzaSize;
+exports.PizzaSize = PizzaSize;
 
-},{"../Storage":4,"../Templates":5}],8:[function(require,module,exports){
+},{"../Storage":3,"../Templates":4}],7:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -493,13 +678,9 @@ var $pizza_list = $("#pizza_list");
 
             $node.find(".buy-big").click(function(){
                 PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Big);
-              //  need_to_pay=need_to_pay+pizza[size].price;
-               // $("#totality").text("HELP грн.");
             });
             $node.find(".buy-small").click(function(){
                 PizzaCart.addToCart(pizza, PizzaCart.PizzaSize.Small);
-               // need_to_pay=need_to_pay+pizza[size].price;
-               // $("#totality").text("HELP грн.");
             });
 
             $pizza_list.append($node);
@@ -555,8 +736,6 @@ function filterPizza(filter) {
                     }
                 });
             }
-//$(".number_of").text(total_in_type);
-    //Показати відфільтровані піци
     showPizzaList(pizza_shown);
 
 }
@@ -607,7 +786,7 @@ function initialiseMenu() {
 
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
-},{"../Pizza_List":3,"../Templates":5,"./PizzaCart":7}],9:[function(require,module,exports){
+},{"../Pizza_List":2,"../Templates":4,"./PizzaCart":6}],8:[function(require,module,exports){
 (function () {
 	// Basil
 	var Basil = function (options) {
@@ -976,7 +1155,7 @@ exports.initialiseMenu = initialiseMenu;
 
 })();
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1727,7 +1906,7 @@ if (typeof window != 'undefined') {
   window.ejs = exports;
 }
 
-},{"../package.json":12,"./utils":11,"fs":13,"path":14}],11:[function(require,module,exports){
+},{"../package.json":11,"./utils":10,"fs":12,"path":13}],10:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1870,7 +2049,7 @@ exports.cache = {
 };
 
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 module.exports={
   "name": "ejs",
   "description": "Embedded JavaScript templates",
@@ -1949,9 +2128,9 @@ module.exports={
   "directories": {}
 }
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -2179,7 +2358,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":15}],15:[function(require,module,exports){
+},{"_process":14}],14:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -2272,4 +2451,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[6]);
+},{}]},{},[5]);
